@@ -1,0 +1,32 @@
+<!Doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="main.css">
+
+  </head>
+  <body>
+    <div id="container">
+        <ul id="bookmarks">
+            <template v-if="bookmarks.length>0" >
+                <li v-for="bookmark in bookmarks">
+                    <p class="title">{{bookmark.title}}</p>
+                    <a :href="bookmark.url">
+                        <img :src="bookmark.src" />   
+                    </a>
+                </li>
+            </template>
+        </ul>
+        <button type="button" @click="removeStorage">清除所有书签</button>
+    </div>
+   <script src="vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
+
